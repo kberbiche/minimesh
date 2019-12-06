@@ -9,7 +9,7 @@ Transform::Transform(const std::string& file_name)
 }
 
 
-void Transform::merge(void)
+void Transform::merge(struct)
 {
 
 }

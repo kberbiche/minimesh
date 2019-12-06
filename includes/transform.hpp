@@ -8,18 +8,21 @@ enum TransformType
 struct Params
 {
   virtual ~Params(void) = default;
+  <std::string> = name;
 
-  // TODO
 };
 
 struct MergeParams : public Params
 {
-  // TODO
+  std::vector<std::string> meshes;
+  bool merge_nodes;
 };
 
 struct TranslationParams : public Params
 {
-  // TODO
+  double X;
+  double Y;
+  double Z;
 };
 
 class Transform

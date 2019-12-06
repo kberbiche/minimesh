@@ -1,0 +1,7 @@
+/net/m/kberbiche/minimesh/build/CMakeFiles/install/strip.dir
+/net/m/kberbiche/minimesh/build/CMakeFiles/install/local.dir
+/net/m/kberbiche/minimesh/build/CMakeFiles/install.dir
+/net/m/kberbiche/minimesh/build/CMakeFiles/list_install_components.dir
+/net/m/kberbiche/minimesh/build/CMakeFiles/rebuild_cache.dir
+/net/m/kberbiche/minimesh/build/CMakeFiles/edit_cache.dir
+/net/m/kberbiche/minimesh/build/CMakeFiles/minimesh.dir

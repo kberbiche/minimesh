@@ -1,5 +1,8 @@
 #pragma once
 
+// Struct
+
+
 class QualityChecker
 {
 public:
