@@ -12,5 +12,7 @@ public:
   // TODO
 
 private:
-  // TODO
+// Params Quality
+  bool _compute_quality;
+
 };

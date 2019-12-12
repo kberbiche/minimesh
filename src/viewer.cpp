@@ -2,17 +2,18 @@
 
 #include "viewer.hpp"
 
-Viewer::Viewer(const std::string& file_name)
-  : m_file_name(file_name)
+Viewer::Viewer()
+//const std::string& file_name
+//: m_file_name(file_name)
 {
 
 }
 
-void Viewer::view(void)
+void Viewer::view()
 {
   //read all the data from the file
   auto reader = vtkSmartPointer<vtkXMLUnstructuredGridReader>::New();
-  reader->SetFileName(filename.c_str());
+  reader->SetFileName(file_name.c_str());
   reader->Update();
 
   auto colors = vtkSmartPointer<vtkNamedColors>::New();
@@ -20,17 +21,9 @@ void Viewer::view(void)
   //Create a mapper and actor
   auto mapper = vtkSmartPointer<vtkDataSetMapper>::New();
   mapper->SetInputConnection(reader->GetOutputPort());
-  //mapper->ScalarVisibilityOff();
-  //mapper -> SetScalarRange(lut -> GetRange())
 
   auto actor = vtkSmartPointer<vtkActor>::New();
   actor->SetMapper(mapper);
-  //actor->GetProperty()->EdgeVisibilityOn();
-  //actor->GetProperty()->SetLineWidth(2.0);
-
-  //auto backFace = vtkSmartPointer<vtkProperty>::New();
-  //backFace->SetColor(colors->GetColor3d("tomato").GetData());
-  //actor->SetBackfaceProperty(backFace);
 
   //Create a renderer, render window, and interactor
   auto renderer = vtkSmartPointer<vtkRenderer>::New();

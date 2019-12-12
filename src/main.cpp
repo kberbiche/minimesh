@@ -9,7 +9,12 @@
 #include <memory>
 #include <tuple>
 
+#include <vtkXMLUnstructuredGridWriter.h>
+
+
 #include "options.hpp"
+#include "transform.hpp"
+#include "quality.hpp"
 #include "viewer.hpp"
 
 void print_usage()
@@ -46,7 +51,8 @@ int main(int argc, char **argv)
     }
     file_name = argv[2];
 
-    auto monviewer = new Viewer(filename.c_str());
+    //auto monviewer = new Viewer(file_name.c_str());
+    auto monviewer = new Viewer();
     monviewer -> view();
 
 // TRANSFORMATION MAILLAGE
@@ -57,24 +63,40 @@ int main(int argc, char **argv)
       return EXIT_FAILURE;
     }
     file_name = argv[2];
-    auto op = new OptionsParser(file_name);
-    /*auto params = */op->parse();
-    delete op;
 
+    //auto op = new OptionsParser(file_name);
+    //*auto params = */op->parse();
+
+    auto op = std::make_shared<OptionsParser>(file_name);
+    op->parse();
+
+    auto matransfo = new Transform(op);
+
+    if(file_name == "merge.toml"){
+      matransfo -> merge();
+      
+    } else if (file_name == "translate.toml"){
+      matransfo -> translate();
+    }
     // Lecture fichier parametre pour choix de la TRANSFORMATION
     // Boucle if
     // creation/appel objet transform
 
-    auto writer = vtkSmartPointer<vtkXMLUnstructuredGridWriter>::New();
-    writer->SetFileName(filename_output.c_str());
-    writer->SetInputData(unstructuredGrid);
-    writer->Write();
+    // auto writer = vtkSmartPointer<vtkXMLUnstructuredGridWriter>::New();
+    // writer->SetFileName(filename_output.c_str());
+    // writer->SetInputData(unstructuredGrid);
+    // writer->Write();
+
+
 
   } else {
     std::cerr << "Error: unknown command\n";
     print_usage();
     return EXIT_FAILURE;
   }
+  // delete monviewer;
+  // delete matransfo;
+  // delete op;
 
   return EXIT_SUCCESS;
 }

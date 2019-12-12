@@ -9,5 +9,6 @@ public:
   Viewer(void) {}
   ~Viewer(void) {}
 
-  void view (vtkSmartPointer<vtkDataSet>);
+  //void view (vtkSmartPointer<vtkDataSet>);
+  void view ();
 };
