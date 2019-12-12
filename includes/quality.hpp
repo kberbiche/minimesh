@@ -6,10 +6,10 @@
 class QualityChecker
 {
 public:
-  QualityChecker() {}
-  ~QualityChecker(void) {}
+  QualityChecker(std::shared_ptr<OptionsParser> option_quality);
+  //~QualityChecker(void) {}
+  double check();
 
-  // TODO
 
 private:
 // Params Quality
